@@ -1,0 +1,31 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+
+
+<div style="text-align: center;">
+<h2>Page_Lists</h2> <br><br>
+    <ul style="display: inline-block; text-align: left; margin-bottom: 40px; padding: 0; list-style-type: none;">
+        {% for page in page_list %}
+            <li style="margin-bottom: 10px;">{{ page.page_date }}: 
+                <a href="{% url 'diary:page_detail' page.id %}">{{ page.title }}</a>
+            </li>
+        {% empty %}
+            <div>日記のページが１つもありません。</div>
+        {% endfor %}
+    </ul>
+</div>
+
+<div style="text-align: center;">
+    <button onclick="goBack()" style="background-color: blue; color: white; padding: 10px 20px; border-radius: 5px;">戻る</button><br><br>
+    <div style="margin-top: 20px;">
+        <a href="{% url 'diary:index' %}" style="background-color: purple; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">トップページに戻る</a>
+    </div><br><br>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}

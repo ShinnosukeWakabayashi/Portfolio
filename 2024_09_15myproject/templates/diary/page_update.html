@@ -1,0 +1,25 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+
+<div style="text-align: center; max-width: 800px; margin: 0 auto;">
+    <h2>日記の更新</h2>
+    <form method="post" enctype="multipart/form-data" style="display: inline-block; text-align: left;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;">更新</button>
+            <button type="button" class="back-button" onclick="goBack()" style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; margin-left: 10px;">戻る</button>
+            <div style="margin-top: 20px;"></div><br><br>
+                <a href="{% url 'diary:index' %}" style="background-color: purple; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">トップページに戻る</a>
+            </div><br><br>
+        </div>
+    </form>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}

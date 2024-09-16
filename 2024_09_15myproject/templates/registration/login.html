@@ -1,0 +1,16 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+<br>
+<div style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <h2>ログイン</h2><br>
+    <form method="post" style="display: inline-block; text-align: left;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;">ログイン</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

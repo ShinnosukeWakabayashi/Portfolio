@@ -1,0 +1,36 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+
+<div style="text-align: center;">
+
+    <form method="POST" style="display: inline-block; margin-bottom: 20px;">
+        {% csrf_token %}
+        <p>このページを削除してよろしいですか？</p>
+        <button type="submit" style="background-color: red; color: white; padding: 10px 20px; border-radius: 5px;">削除</button>
+    </form>
+
+    <h2>{{ page.title }}</h2>
+    <div>{{ page.page_date }}</div>
+    <div>{{ page.body | linebreaksbr }}</div>
+
+    {% if page.picture %}
+        <img src="{{ page.picture.url }}" style="max-width: 100%; height: auto; margin-top: 20px;" />
+    {% endif %}
+
+    <div style="margin-top: 20px;">
+        <button onclick="goBack()" style="background-color: blue; padding: 10px 20px; border-radius: 5px;">戻る</button>
+    </div><br><br>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'diary:index' %}" style="background-color: purple; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">トップページに戻る</a>
+    </div><br><br>
+
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}
